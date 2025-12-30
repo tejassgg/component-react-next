@@ -1,18 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import Link from 'next/link';
 import "./globals.css";
 import { configDotenv } from "dotenv";
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const montserrat = Montserrat({
+  display: 'swap', // 'swap' ensures text is visible while the font is loading
+  variable: 'sans-serif',
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Create Next App",
@@ -24,8 +20,9 @@ configDotenv();
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
+        className={`${montserrat.variable} antialiased flex`}
       >
         <div className="w-1/10 sticky top-0 flex flex-col justify-between border-r rounded-xl border-gray-300 ">
           <aside className="h-full flex flex-col gap-4 bg-gray-100 px-4 py-4 text-xl shadow-md shadow-gray-200 ">
