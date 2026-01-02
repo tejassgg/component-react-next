@@ -6,7 +6,9 @@ export default function Input({
   className = "",
   placeholder = "",
   required = false,
-  children
+  type = "text",
+  label,
+  children,
 }) {
   return (
     <input
@@ -15,6 +17,7 @@ export default function Input({
       className={className}
       placeholder={placeholder}
       required={required}
+      type={type}
     >
       {children}
     </input>
