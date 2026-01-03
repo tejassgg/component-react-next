@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }) {
       </div>
       <main className="w-9/10">
         <div className="py-3 px-4 bg-gray-200">
-          <h1 className="text-4xl font-bold">NavBar</h1>
+          <h1 className="text-4xl font-bold text-blue-500">NavBar</h1>
         </div>
         {children}
       </main>

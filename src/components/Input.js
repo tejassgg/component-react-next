@@ -7,17 +7,22 @@ export default function Input({
   placeholder = "",
   required = false,
   type = "text",
-  label,
+  onChange,
+  value,
+  name,
   children,
 }) {
   return (
     <input
+      name={name}
       onClick={onClick}
       disabled={disabled}
       className={className}
       placeholder={placeholder}
       required={required}
       type={type}
+      onChange={onChange}
+      value={value}
     >
       {children}
     </input>

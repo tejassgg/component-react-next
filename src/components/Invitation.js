@@ -61,7 +61,7 @@ export default function InvitationModal() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", duration: 0.4, bounce: 0.3 }}
-              className="relative max-w-3xl bg-white border border-gray-200 rounded-2xl p-6 shadow-xl w-full flex flex-col gap-6 max-h-[90vh] overflow-y-auto"
+              className="relative max-w-2xl bg-white border border-gray-200 rounded-2xl p-6 shadow-xl w-full flex flex-col gap-6 max-h-[90vh] overflow-y-auto"
             >
               <div className="header flex items-center justify-between border-b pb-4 border-dashed border-gray-300">
                 <div className="flex items-center gap-4">

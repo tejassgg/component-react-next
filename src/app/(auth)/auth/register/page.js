@@ -18,6 +18,36 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
+  const [formData, setFormData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if(formData.cpassword != formData.password){
+        alert("Passwords does not match.!");
+        return;
+      }
+      // const response = await axios.post("/api/auth/register", formData);
+      // console.log("Registration Successful:", response.data);
+      // Logic for redirecting or showing success message
+    } catch (error) {
+      console.error(
+        "Registration Error:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
   return (
     <div className="w-full flex items-center justify-center min-h-screen">
       <div className="w-1/2 min-h-screen bg-blue-500 p-18 flex flex-col justify-between text-white">
@@ -31,7 +61,10 @@ export default function Login() {
         </div>
       </div>
       <div className="w-1/2 flex items-center justify-center">
-        <form className="flex flex-col gap-6 p-24 w-3/4">
+        <form
+          className="flex flex-col gap-6 p-24 w-3/4"
+          onSubmit={handleSubmit}
+        >
           <div className="mb-8">
             <h1 className="text-5xl font-bold ">Register</h1>
             <h1 className="text-lg ">Create a new account</h1>
@@ -47,6 +80,8 @@ export default function Login() {
                 placeholder="Enter your Full Name"
                 className="px-4 py-2 w-full text-black text-lg rounded-xl border border-gray-200 focus:outline-none"
                 required
+                onChange={handleChange}
+                value={formData.name}
               ></Input>
             </div>
             <div className="flex flex-col justify-between">
@@ -59,6 +94,8 @@ export default function Login() {
                 placeholder="Enter Email ID"
                 className="px-4 py-2 w-full text-black text-lg rounded-xl border border-gray-200 focus:outline-none"
                 required
+                onChange={handleChange}
+                value={formData.email}
               ></Input>
             </div>
             <div className="flex flex-col justify-between">
@@ -71,6 +108,8 @@ export default function Login() {
                 placeholder="Enter Username"
                 className="px-4 py-2 w-full text-black text-lg rounded-xl border border-gray-200 focus:outline-none"
                 required
+                onChange={handleChange}
+                value={formData.username}
               ></Input>
             </div>
             <div className="flex flex-col justify-between">
@@ -85,6 +124,8 @@ export default function Login() {
                   placeholder="Enter Password"
                   className="px-4 py-2 w-full text-black text-lg focus:outline-none"
                   required
+                  onChange={handleChange}
+                  value={formData.password}
                 ></Input>
                 {showPassword ? (
                   <FaEye size={18} className="mr-4" onClick={togglePassword} />
@@ -103,12 +144,14 @@ export default function Login() {
               </label>
               <div className="flex items-center justify-between rounded-xl border border-gray-200 cursor-pointer">
                 <Input
-                  name="confirmpassword"
+                  name="cpassword"
                   label="Password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Repeat Password"
                   className="px-4 py-2 w-full text-black text-lg focus:outline-none"
                   required
+                  onChange={handleChange}
+                  value={formData.cpassword}
                 ></Input>
                 {showPassword ? (
                   <FaEye size={18} className="mr-4" onClick={togglePassword} />
@@ -123,7 +166,6 @@ export default function Login() {
             </div>
             <div className="flex flex-col items-center gap-2 mt-6">
               <Button
-                onClick={handleClick}
                 className="text-lg rounded-2xl text-blue-500 w-1/4 mx-auto"
                 variant="primary"
                 size="medium"
@@ -131,7 +173,7 @@ export default function Login() {
               ></Button>
               - or -
               <Button
-                onClick={handleClick}
+                // onClick={handleClick}
                 className="text-lg rounded-2xl text-blue-500 flex items-center justify-center mx-auto"
                 variant="transparent"
                 size="medium"
@@ -141,7 +183,7 @@ export default function Login() {
             </div>
             <div className="text-center">
               <p>
-                Have an account?{" "}
+                Already Have an account?{" "}
                 <Link
                   href="/auth/login"
                   className="text-blue-500 hover:underline font-bold"
